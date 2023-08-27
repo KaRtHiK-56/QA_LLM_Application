@@ -10,7 +10,7 @@ os.environ["HUGGINGFACEHUB_API_TOKEN"] = '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'
 st.markdown("""
 <style>
 
-.css-1w3peyr.egzxvld1
+.css-cio0dv egzxvld1
 {
     visibility : hidden;
 }
@@ -41,17 +41,9 @@ if menu == 'QA-App':
     st.title("┗┃・ ■ ・┃┛ Welcome to QA-GPT 😉")
     st.header("This application will answer to few of your basic questions 😄")
     
-    def give_answer(question):
-        llm = HuggingFaceHub(repo_id='google/flan-t5-xxl')
-        answer = llm(question)
-        return answer
-    
-    def ask_question():
-        question = st.text_input("Please type your question here:",key='question')
-        return question
-    
-    question = ask_question()
-    answer = give_answer(question)
+    question = st.text_input("Please type your question here:")
+    llm = HuggingFaceHub(repo_id='google/flan-t5-xxl')
+    answer = llm(question)
 
     submit = st.button("Generate Answer") 
 
