@@ -3,7 +3,8 @@
 and the langchain is the wrapper for accessing the LLM's '''
 import streamlit as st
 from langchain.llms import HuggingFaceHub 
-
+import os
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = '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'
 
 #this piece of code is to remove the made with streamlit command
 st.markdown("""
@@ -21,33 +22,33 @@ st.markdown("""
 
 with st.sidebar:
     st.image("qalogo.jpg")
-    st.title("🤖 QA-GPT!!")
+    st.title("┗┃・ ■ ・┃┛ QA-GPT!!")
     menu = st.radio("Menu" ,["Home", "QA-App", "About Me"])
 
-
+#home menu to display the home section 
 if menu == "Home":
     st.title("Welcome to the Q/A-GPT.")
-    st.header("This is a Generative AI application which will answe few of your basic questions.")
+    st.header("This is a Generative AI application which will answer few of your basic questions.")
     st.subheader("Steps to follow")
-    list_items=''' 1. Click on the QA-App button and navigate to the QA section.
-    2. In the QA-App section in the input text box, type in your basic question.
+    list_items=''' 
+    1. Click on the QA-App button and navigate to the QA section.\n
+    2. In the QA-App section in the input text box, type in your basic question.\n
     3. The generative AI-System will generate the answer for your question.'''
     st.write(list_items) 
 
-
+#the qa section where the llm app will run 
 if menu == 'QA-App':
-    st.title("🤖 Welcome to QA-GPT 😉")
+    st.title("┗┃・ ■ ・┃┛ Welcome to QA-GPT 😉")
     st.header("This application will answer to few of your basic questions 😄")
+    
+    def give_answer(question):
+        llm = HuggingFaceHub(repo_id='google/flan-t5-xxl')
+        answer = llm(question)
+        return answer
     
     def ask_question():
         question = st.text_input("Please type your question here:",key='question')
         return question
-
-
-    def give_answer(question):
-        llm = HuggingFaceHub(repo_id='google/flan-t5-large')
-        answer = llm(question)
-        return answer
     
     question = ask_question()
     answer = give_answer(question)
