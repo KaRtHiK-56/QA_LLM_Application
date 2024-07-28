@@ -1,6 +1,5 @@
 
-# Question and Answering LLM
-
+# Question and Answering Large Language Model
 Hi!!! Lads, Welcome to this repository. This is a question-and-answering application, which uses the power of Generative AI to answer your doubts.
 
 LLM (Large Language Models) is a type of artificial intelligence algorithm that uses the power of Deep learning techniques to understand the data, which is usually trained on massively large amounts of data to generate or respond to text-based data ie. Human understanding/speaking language.
